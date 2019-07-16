@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let users = [
+              {
+                "user": "Igor V",
+                "brand": ["VW Golf", "Renault Symbol"],
+                "phones": ["380684567934"]
+              },
+              {
+                "user": "Igor S",
+                "brand": ["Mazda CX-5", "VV bora"],
+                "phones": ["380685438903"]
+              },
+              {
+                "user": "Ruslan",
+                "brand": ["Mazda 3", "VV bora", "VAZ 2111"],
+                "phones": ["380986784345"]
+              },
+              {
+                "user": "Roman",
+                "brand": ["Mercedes GL", "Skoda Roomster"],
+                "phones": ["380989909876"]
+              },
+              {
+                "user": "Andriy",
+                "brand": ["Peugeot Expert", "Skoda Roomster"],
+                "phones": ["380681687096"]
+              },
+              {
+                "user": "Bohdan",
+                "brand": ["Volkswagen Polo", "Dacia Logan"],
+                "phones": ["380979399997", "380959388887"]
+              },
+              {
+                "user": "Vasya",
+                "brand": ["Renault Kadjar", "Dacia Logan"],
+                "phones": ["380970999997"]
+              },
+              {
+                "user": "Dmytro",
+                "brand": ["KIA Sorento", "Dacia Logan", "Mitsubishi Outlander"],
+                "phones": ["380979889977"]
+              },
+              {
+                "user": "Oleksiy",
+                "brand": ["Nissan Qashqai", "Mitsubishi Outlander"],
+                "phones": ["380998899990"]
+              },
+              {
+                "user": "Yuriy",
+                "brand": ["Toyota Camry"],
+                "phones": ["380957899632"]
+              }
+        ];
+    //object with users
+        function getUserByPhoneNumber(arr, str){
+            let objUsers = {};
+            arr.forEach(function(item){
+                if (item.phones.some(function(phoneNum){
+                            return phoneNum.includes(str)})){
+                        objUsers[item.user] = item;
+                    }
+            });    
+            return objUsers
+        };
+        console.log(getUserByPhoneNumber(users, "095"));
+    //array with all cars
+        function getArrAllCars(arr){
+            return arr.reduce(function(accumulator, currentValue) {
+                  return accumulator.concat(currentValue.brand);
+              },[]);
+        }
+        let arrAllCars = getArrAllCars(users);
+        console.log(arrAllCars);  
+    //array with unique cars
+        function getArrUniqueCars(arr){
+            return [...new Set(arr)];
+        }
+        console.log(getArrUniqueCars(arrAllCars));
+     </script>
+</body>
+</html>
